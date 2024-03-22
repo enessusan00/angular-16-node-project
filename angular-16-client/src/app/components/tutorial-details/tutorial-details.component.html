@@ -10,7 +10,7 @@
     </div>
     <div>
       <label><strong>Status:</strong></label>
-      {{ currentTutorial.published ? "Published" : "Pending" }}
+      {{ currentTutorial.state ? "Published" : "Pending" }}
     </div>
 
     <a class="badge badge-warning"
@@ -35,7 +35,7 @@
           type="text"
           class="form-control"
           id="title"
-          [(ngModel)]="currentTutorial.title"
+          [(ngModel)]="currentTutorial.state"
           name="title"
         />
       </div>
@@ -52,21 +52,21 @@
 
       <div class="form-group">
         <label><strong>Status:</strong></label>
-        {{ currentTutorial.published ? "Published" : "Pending" }}
+        {{ currentTutorial.state ? "Published" : "Pending" }}
       </div>
     </form>
 
     <button
       class="badge badge-primary mr-2"
-      *ngIf="currentTutorial.published"
-      (click)="updatePublished(false)"
+      *ngIf="currentTutorial.state"
+      (click)="updatePublished('pending')"
     >
       UnPublish
     </button>
     <button
-      *ngIf="!currentTutorial.published"
+      *ngIf="!currentTutorial.state"
       class="badge badge-primary mr-2"
-      (click)="updatePublished(true)"
+      (click)="updatePublished('pending')"
     >
       Publish
     </button>

@@ -11,7 +11,7 @@ export class AddTutorialComponent {
   tutorial: Tutorial = {
     title: '',
     description: '',
-    published: false
+    state: 'pending'
   };
   submitted = false;
 
@@ -20,7 +20,8 @@ export class AddTutorialComponent {
   saveTutorial(): void {
     const data = {
       title: this.tutorial.title,
-      description: this.tutorial.description
+      description: this.tutorial.description,
+      status: 'pending'
     };
 
     this.tutorialService.create(data).subscribe({
@@ -37,7 +38,7 @@ export class AddTutorialComponent {
     this.tutorial = {
       title: '',
       description: '',
-      published: false
+      state: 'pending'
     };
   }
 }

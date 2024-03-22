@@ -14,7 +14,7 @@ export class TutorialDetailsComponent {
   @Input() currentTutorial: Tutorial = {
     title: '',
     description: '',
-    published: false
+    state: 'pending'
   };
 
   message = '';
@@ -42,7 +42,7 @@ export class TutorialDetailsComponent {
     });
   }
 
-  updatePublished(status: boolean): void {
+  updatePublished(status: string): void {
     const data = {
       title: this.currentTutorial.title,
       description: this.currentTutorial.description,
@@ -54,7 +54,7 @@ export class TutorialDetailsComponent {
     this.tutorialService.update(this.currentTutorial.id, data).subscribe({
       next: (res) => {
         console.log(res);
-        this.currentTutorial.published = status;
+        this.currentTutorial.state = status;
         this.message = res.message
           ? res.message
           : 'The status was updated successfully!';
